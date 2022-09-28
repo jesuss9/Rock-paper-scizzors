@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors </title>
+</head>
+
+<body>
+
+    <script>
+
+        const arrayChoices= ["Rock", "Paper", "Scissors"];
+
+      function getComputerChoice () {
+        const random= Math.floor(Math.random()*arrayChoices.length);
+        const choice= arrayChoices [random] 
+        const loweredChoice=choice.toLowerCase();
+        return loweredChoice;
+      };
+
+      function singleRound(playerSelection, computerSelection) {
+        if (playerSelection===computerSelection) {
+            return "it looks like a tie!!"
+        } else if (playerSelection==="rock" && computerSelection==="paper") {
+            computerScore++
+            return "Rock gets covered by paper you loose"
+        } else if (playerSelection==="rock" && computerSelection==="scissors") {
+            playerScore++
+            return "Rock smashes scissors ypu win!!!"
+        } else if (playerSelection=="scissors" && computerSelection=="paper") {
+            playerScore++
+            return "Scissors cut paper you win!!!"
+        } else if (playerSelection=="scissors" && computerSelection=="rock") {
+            computerScore++
+            return "Scissors gets smashed by rocks you lose"
+        } else if (playerSelection=="paper" && computerSelection=="rock") {
+            playerScore++
+            return "Paper covers rock you win!!!"
+        } else if (playerSelection=="paper" && computerSelection=="scissors") {
+            computerScore++
+            return "Paper gets cut by scissors you lose"
+        }
+      };
+
+      function getPlayerChoice() {
+        const playerAnswer=prompt("What will be your weapon either rock, paper, or scissors??")
+        const answerLower= playerAnswer.toLowerCase(1);
+        return answerLower;
+      }
+
+      const playerSelection=getPlayerChoice();
+      const computerSelection=getComputerChoice();
+
+      let playerScore=0;
+      let computerScore=0;
+      
+      function game() {
+        for (let i=0; i<5; i++) {
+            const playerSelection=getPlayerChoice()
+            const computerSelection=getComputerChoice()
+            console.log("Computer choose " + computerSelection);
+            console.log(singleRound(playerSelection, computerSelection))
+        }
+
+        if (computerScore>playerScore) {
+            return "You've lost to a computer hahahah"
+        } else if (playerScore>computerScore) {
+            return "WOW you beat a computer, so smart!!!"
+        } else {
+            return "Looks like yall are both on the same level, TIE!!"
+        }
+      };
+
+      console.log(game());
+      </script>
+</body>
+
+
+</html>
